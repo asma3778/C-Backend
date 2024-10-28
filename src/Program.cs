@@ -7,7 +7,6 @@ using sda_3_online_Backend_Teamwork.src.DataBase;
 using sda_3_online_Backend_Teamwork.src.Entity;
 using sda_3_online_Backend_Teamwork.src.Middlewares;
 using sda_3_online_Backend_Teamwork.src.Repository;
-using sda_3_online_Backend_Teamwork.src.Services.Brand;
 using sda_3_online_Backend_Teamwork.src.Services.Category;
 using sda_3_online_Backend_Teamwork.src.Services.Order;
 using sda_3_online_Backend_Teamwork.src.Services.Product;
@@ -40,9 +39,18 @@ builder.Services
 .AddScoped<IOrderService, OrderService>()
 .AddScoped<OrderRepository, OrderRepository>();
 
-builder
-    .Services.AddScoped<IBrandService, BrandService>()
-    .AddScoped<BrandRepository, BrandRepository>();
+
+var MyAllowSpecificOrigins = "MyAllowSpecificOrigins";
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+    policy => {
+        policy.WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .SetIsOriginAllowed((host) => true)
+        .AllowCredentials();
+    });
+});
 
 builder
     .Services.AddAuthentication(options =>
@@ -89,6 +97,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 // Middleware order is updated: Authentication and Authorization first
 app.UseAuthentication();

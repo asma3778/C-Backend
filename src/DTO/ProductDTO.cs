@@ -12,9 +12,6 @@ namespace sda_3_online_Backend_Teamwork.src.DTO
             public int StockQuantity { get; set; }
             public string ImageUrl { get; set; }
 
-            public Guid BrandId { get; set; } // FK
-            public Brand? Brand { get; set; } // Navigation property
-
             public Guid CategoryId { get; set; } // FK
             public Category? Category { get; set; } // Navigation property
         }
@@ -27,7 +24,6 @@ namespace sda_3_online_Backend_Teamwork.src.DTO
             public required string Description { get; set; }
             public int StockQuantity { get; set; }
             public string ImageUrl { get; set; }
-            public Guid BrandId{ get; set; }
             public Guid CategoryId { get; set; }
         }
 

@@ -7,7 +7,6 @@ namespace sda_3_online_Backend_Teamwork.src.DataBase
     {
         public DbSet<Product> Product { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<Brand> Brand { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderItem> orderItems { get; set; }

@@ -9,8 +9,6 @@ namespace sda_3_online_Backend_Teamwork.src.DTO
         {
             public required string CategoryName { get; set; }
 
-        public ICollection<Brand> Brands { get; set; } = new List<Brand>();
-
         }
 
         public class CategoryReadDto

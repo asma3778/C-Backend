@@ -1,5 +1,4 @@
 using AutoMapper;
-using static sda_3_online_Backend_Teamwork.src.DTO.BrandDTO;
 using static sda_3_online_Backend_Teamwork.src.DTO.CategoryDTO;
 using static sda_3_online_Backend_Teamwork.src.DTO.OrderDTO;
 using static sda_3_online_Backend_Teamwork.src.DTO.OrderItemDTO;
@@ -42,13 +41,6 @@ namespace sda_3_online_Backend_Teamwork.src.Utils
              CreateMap<OrderItemCreateDto, Entity.OrderItem>().
           //   CreateMap<OrderItemUpdateDto, Entity.OrderItem>().
              ForAllMembers(opts => opts.Condition((src, dest, srcProperty) => srcProperty != null));
-
-   
-            // Brand
-            CreateMap<Entity.Brand, BrandReadDto>();
-            CreateMap<BrandCreateDto, Entity.Brand>();
-            CreateMap<BrandUpdateDto, Entity.Brand>()
-                .ForAllMembers(opts => opts.Condition((src, dest, srcProperty) => srcProperty != null));
         }
     }
 }
