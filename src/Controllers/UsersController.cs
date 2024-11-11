@@ -6,6 +6,7 @@ using sda_3_online_Backend_Teamwork.src.Entity;
 using sda_3_online_Backend_Teamwork.src.Services.User;
 using sda_3_online_Backend_Teamwork.src.Utils;
 using static sda_3_online_Backend_Teamwork.src.DTO.UserDTO;
+using System.Security.Claims;
 
 namespace sda_3_online_Backend_Teamwork.src.Controllers
 {
@@ -100,6 +101,17 @@ namespace sda_3_online_Backend_Teamwork.src.Controllers
                 return NotFound();
             }
             return NoContent();
+        }
+
+        [HttpGet("auth")]
+        [Authorize]
+        public async Task<ActionResult<UserReadDto>> CheckAuthAsync()
+        {
+            var authenticatedClaims = HttpContext.User;
+            var userId = authenticatedClaims.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
+            var userGuid = new Guid(userId);
+            var user = await _userService.GetByIdAsync(userGuid);
+            return Ok(user);
         }
 
         //add Token

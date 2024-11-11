@@ -11,7 +11,7 @@ namespace sda_3_online_Backend_Teamwork.src.DTO
             public DateTime? OrderDate { get; set; } = DateTime.UtcNow;
 
             //  public Guid UserId { get; set; }
-            public required decimal TotalAmount { get; set; }
+            public decimal TotalAmount { get; set; }
             public string? Status { get; set; }
             public required int PaymentMethodId { get; set; }
             public ICollection<OrderItemCreateDto> OrderItems { get; set; } =

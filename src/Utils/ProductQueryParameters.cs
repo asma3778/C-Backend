@@ -8,6 +8,6 @@ namespace sda_3_online_Backend_Teamwork.src.Utils
         public string SortBy { get; set; } = "title";
         public string SortOrder { get; set; } = "asc";
         public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 2;
+        public int PageSize { get; set; } = 10;
     }
 }
